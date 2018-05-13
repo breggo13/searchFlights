@@ -8,10 +8,13 @@ Documents include searchFlights.php, .htaccess, Provider1.txt, Provider2.txt, Pr
 3. In browser, open up new tab and type in the following :
 http://{localhost}/searchFlights/{Origin}/{Destination}
 
+NOTE: If files in seperate folder (ex. searchFlights) then:
+http://{localhost}/{folderName}/searchFlights/{Origin}/{Destination}
+
 -----------------------------------------
 
 Running "searchFlights2.html"
--------------------------------
+----------------------------------
 1. Move all necessary files & folders into root of Apache or equivalent. 
 Documents include searchFlights2.php, .htaccess, Provider1.txt, Provider2.txt, Provider3.txt, searchFlights2.html, css folder
 
@@ -19,3 +22,6 @@ Documents include searchFlights2.php, .htaccess, Provider1.txt, Provider2.txt, P
 
 3. In browser, open up a new tab and type in the following address:
 http://{localhost}/searchFlights2.html
+
+NOTE: If files in seperate folder (ex. searchFlights) then:
+http://{localhost}/{folderName}/searchFlights2.html && change axios link in code to accomodate
