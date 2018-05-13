@@ -23,6 +23,9 @@ else
 	response(400,"Invalid Request",NULL);
 }
 
+/*Function: Creates a JSON object to be passed back to the front end
+@param: int $status, string $status_message, array $data
+@return: Echoes json object*/
 function response($status,$status_message,$data)
 {
 	header("HTTP/1.1 ".$status);
@@ -35,7 +38,9 @@ function response($status,$status_message,$data)
 	echo $json_response;
 }
 	
-/*Function: Adds all flights from a provider text file to main array, skips empty lines*/
+/*Function: Adds all flights from a provider text file to main array, skips empty lines
+@param: textfile name $textfile, array $destarr, char $arg
+*/
 function addProviderFlights($textfile,&$destarr,$arg)
 {
 	$provider = fopen($textfile,"r");
@@ -49,7 +54,9 @@ function addProviderFlights($textfile,&$destarr,$arg)
 }
 fclose($provider);	
 }
-/*Function: Filters flights based on origin and destination codes*/
+/*Function: Filters flights based on origin and destination codes
+@param: array $destarr
+*/
 function selectFlights(&$destarr)
 {
 	$temp = array();
@@ -64,7 +71,9 @@ function selectFlights(&$destarr)
 	changeDateTime($destarr);
 	$destarr = array_unique($destarr,SORT_REGULAR);
 }
-/*Function: Change DateTime format to the standard necessary*/
+/*Function: Change DateTime format to the standard necessary
+@param: array $arr
+*/
 function changeDateTime(&$arr)
 {
 	for($a=0;$a<count($arr);$a++)
@@ -77,7 +86,9 @@ function changeDateTime(&$arr)
 			$arr[$a][3] = $temp[0]."/".$temp[1]."/".$temp[2];
 	}
 }
-/*Function: Prints all flights in the right order*/
+/*Function: Prints all flights in the right order
+@param: array $destarr
+*/
 function printFlights($destarr)
 {
 	if(count($destarr)==0)
@@ -93,7 +104,10 @@ function printFlights($destarr)
 		}
 	}
 }
-/*Function: Helper Sorting function*/
+/*Function: Helper Sorting function
+@param: value $a, value $b
+@return: int -1, 0 or 1
+*/
 function sortValue($a,$b)
 {	
 	if(floatval(str_replace('$','',$a[4])) == floatval(str_replace('$','',$b[4])))
