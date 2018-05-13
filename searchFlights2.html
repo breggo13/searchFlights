@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<!--
+TripStack Coding Assignment - Web Application Extended
+Natasha Ukolova - May 12th, 2018
+Creating web application using Vue JS and connecting to PHP API
+-->
 <html>
   <head>
     <title>Global Insight Test</title>
@@ -81,8 +86,8 @@
 		</div>
 	</div>
 	<script>
-		var ocity;
-		var acity;
+		var ocity; //Origin City
+		var acity; //Arrival City
 new Vue({
   el: '#app',
   data: {
@@ -96,7 +101,7 @@ new Vue({
     fetchFlights: function(xcity,bcity) {
 
       var vm = this
-      axios.get('http://localhost/searchFlights/searchFlights2/'+xcity+'/'+bcity)
+      axios.get('http://localhost/searchFlights2/'+xcity+'/'+bcity)
         .then(function(response) {
           vm.result = response.data;
         })
