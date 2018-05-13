@@ -10,7 +10,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js"></script>
-	<script src="restaurants.js"></script>
   </head>
   <body>
 	<div id="app" class="container-fluid">
@@ -70,6 +69,9 @@
 								</tr>
 							</table>
 						</template>
+						<template v-if="result && !result.data && result.status_message">
+							<h2 class="results">{{result.status_message}}</h2>
+						</template>
 					</div>
 				</div>
 			</div>
@@ -88,14 +90,13 @@ new Vue({
     errors: [],
   },
   created() {
-    this.fetchFlights();
   },
   methods: {
 
     fetchFlights: function(xcity,bcity) {
 
       var vm = this
-      axios.get('http://localhost/searchFlights2/'+xcity+'/'+bcity)
+      axios.get('http://localhost/searchFlights/searchFlights2/'+xcity+'/'+bcity)
         .then(function(response) {
           vm.result = response.data;
         })
