@@ -1,0 +1,43 @@
+body {
+	background-image: url("bg.jpg");
+}
+
+.main {
+	background-color: white;
+	opacity: 0.8;
+	filter: aplha(opacity=80);
+	border-radius: 4px;
+	padding: 8px;
+	margin: 4px;
+}
+
+@font-face {
+	font-family: headingFont;
+	src: url("Archistico_Bold-webfont.woff");
+}
+
+h1 {
+	font-family: headingFont;
+	color: white;
+	size: 60px;
+}
+
+#main {
+	font-size: 18px;
+}
+
+#help {
+	padding: 2px;
+	margin: 2px;
+}
+
+#search {
+	border-radius: 4px;
+}
+
+.results {
+	margin: 4px;
+	padding: 4px;
+	font-family: headingFont;
+	text-align: center;
+}

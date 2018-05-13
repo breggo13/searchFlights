@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Global Insight Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/searchFlights2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.js"></script>
+	<script src="restaurants.js"></script>
+  </head>
+  <body>
+	<div id="app" class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<br>
+			</div>
+			<div class="col-sm-8">
+				<div class="row">
+					<div class="page-header">
+						<h1 class="text-center">Search Flights V2.0</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div id="main" class="main">
+							<p>Time flies and soon it's time to fly. Whether you know where to go or are still deciding, look up where to go now. The world is <em>your</em> oister and the only way to feel alive is to experience something for the first time. Your first trip, your first adventure, your first love, your first heartbreak, your first <b>Flight Search...</b>
+							</p>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="row form-group main">
+							<div id="help">
+								<label for="ocity"> Type in where you are flying from:</label>
+								<input id="ocity" type="text" v-model="ocity" placeholder="eg. YYZ" class="form-control" />
+								<label for="acity"> Type in your destination:</label>
+								<input id="acity" type="text" v-model="acity" placeholder="eg.LAX" class="form-control"/>
+							</div>
+							<div class="input-group-btn row">
+								<div class="col-sm-5"></div>
+								<div class="col-sm-2">
+									<button v-on:click="fetchFlights(ocity,acity)" a href='#' class="btn btn-info" id="search">Search</button>
+								</div>
+								<div class="col-sm-5"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container">
+					<div class="row center">
+						<template v-if="result && result.data">
+							<h2 class="results">Results</h2>
+							<table class="table table-hover table-bordered">
+								<tr class="info results">
+									<th>Origin City</th>
+									<th>Destination City</th>
+									<th>Departure</th>
+									<th>Arrival</th>
+									<th>Price</th>
+								</tr>
+								<tr v-for="r of result.data">
+								  <th>{{r.origin}}</th>
+								  <th>{{r.destination}}</th>
+								  <th>{{r.departure}}</th>
+								  <th>{{r.arrival}}</th>
+								  <th>{{r.price}}</th>
+								</tr>
+							</table>
+						</template>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<br>
+			</div>
+		</div>
+	</div>
+	<script>
+		var ocity;
+		var acity;
+new Vue({
+  el: '#app',
+  data: {
+    result: null,
+    errors: [],
+  },
+  created() {
+    this.fetchFlights();
+  },
+  methods: {
+
+    fetchFlights: function(xcity,bcity) {
+
+      var vm = this
+      axios.get('http://localhost/searchFlights2/'+xcity+'/'+bcity)
+        .then(function(response) {
+          vm.result = response.data;
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    }
+
+  }
+})
+	</script>
+  </body>
+</html>

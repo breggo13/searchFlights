@@ -1,0 +1,21 @@
+Running "searchFlights.php"
+---------------------------
+1. Move all necessary files into the root of Apache or equivalent (ie. htdocs in Apache)
+Documents include searchFlights.php, .htaccess, Provider1.txt, Provider2.txt, Provider3.txt
+
+2. Start Apache or equivalent
+
+3. In browser, open up new tab and type in the following :
+http://{localhost}/searchFlights/{Origin}/{Destination}
+
+-----------------------------------------
+
+Running "searchFlights2.html"
+-------------------------------
+1. Move all necessary files & folders into root of Apache or equivalent. 
+Documents include searchFlights2.php, .htaccess, Provider1.txt, Provider2.txt, Provider3.txt, searchFlights2.html, css folder
+
+2. Start Apache (Xampp) or equivalent
+
+3. In browser, open up a new tab and type in the following address:
+http://{localhost}/searchFlights2.html

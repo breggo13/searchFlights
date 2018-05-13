@@ -1,0 +1,4 @@
+RewriteEngine On    # Turn on the rewriting engine
+
+RewriteRule ^searchFlights/([a-zA-Z_-]*)/(.*)$ searchFlights.php?dep=$1&dest=$2 [NC,L]
+RewriteRule ^searchFlights2/([a-zA-Z_-]*)/(.*)$ searchFlights2.php?dep=$1&dest=$2 [NC,L]
